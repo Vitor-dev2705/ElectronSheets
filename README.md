@@ -28,8 +28,11 @@ Certifique-se de ter o seguinte instalado antes de começar:
 
 2. Instale todas as dependências necessárias:
 
-```npm install```
-Dependências
+``` 
+npm install nodejs
+npm install electron
+
+```
 
 O ElectronSheet utiliza as seguintes bibliotecas:
 
