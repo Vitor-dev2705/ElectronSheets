@@ -1,0 +1,140 @@
+{
+  "Categorias": {
+    "A": {
+      "descricao": [
+        "Gerentes de Projetos",
+        "Diretores de Marketing",
+        "Consultores Estratégicos",
+        "Analistas de Negócios"
+      ],
+      "deslocamentos": {
+        "Regioes_Metropolitanas": 720.50,
+        "Capitais_Menores": 680.30,
+        "Outras_Areas": 640.20
+      }
+    },
+    "B": {
+      "descricao": [
+        "Coordenadores de Equipes"
+      ],
+      "deslocamentos": {
+        "Regioes_Metropolitanas": 650.45,
+        "Capitais_Menores": 610.25,
+        "Outras_Areas": 570.10
+      }
+    },
+    "C": {
+      "descricao": [
+        "Supervisores de Operações"
+      ],
+      "deslocamentos": {
+        "Regioes_Metropolitanas": 600.40,
+        "Capitais_Menores": 560.20,
+        "Outras_Areas": 520.00
+      }
+    },
+    "D": {
+      "descricao": [
+        "Analistas de Dados",
+        "Assistentes Administrativos",
+        "Auxiliares de Suporte",
+        "Estagiários de Tecnologia"
+      ],
+      "deslocamentos": {
+        "Regioes_Metropolitanas": 570.35,
+        "Capitais_Menores": 530.15,
+        "Outras_Areas": 490.05
+      }
+    },
+    "E": {
+      "descricao": [
+        "Técnicos em Informática",
+        "Auxiliares Operacionais",
+        "Assistentes de Logística",
+        "Coordenadores de Recursos"
+      ],
+      "deslocamentos": {
+        "Regioes_Metropolitanas": 550.30,
+        "Capitais_Menores": 510.10,
+        "Outras_Areas": 470.00
+      }
+    },
+    "F": {
+      "descricao": [
+        "Estagiários de Comunicação",
+        "Trainees de Finanças",
+        "Alunos de Cursos Técnicos",
+        "Aprendizes de Programação"
+      ],
+      "deslocamentos": {
+        "Regioes_Metropolitanas": 500.25,
+        "Capitais_Menores": 460.05,
+        "Outras_Areas": 420.00
+      }
+    },
+    "G": {
+      "descricao": [
+        "Colaboradores Temporários",
+        "Assistentes de Atendimento"
+      ],
+      "deslocamentos": {
+        "Regioes_Metropolitanas": 480.20,
+        "Capitais_Menores": 440.00,
+        "Outras_Areas": 400.00
+      }
+    }
+  },
+  "Posicoes_Publicas": {
+    "a": {
+      "descricao": [
+        "Diretores Executivos"
+      ],
+      "deslocamentos": {
+        "Regioes_Metropolitanas": 950.00,
+        "Capitais_Menores": 900.00,
+        "Outras_Areas": 850.00
+      }
+    },
+    "b": {
+      "descricao": [
+        "Gerentes Regionais"
+      ],
+      "deslocamentos": {
+        "Regioes_Metropolitanas": 870.00,
+        "Capitais_Menores": 830.00,
+        "Outras_Areas": 780.00
+      }
+    },
+    "c": {
+      "descricao": [
+        "Supervisores de Projetos",
+        "Líderes Técnicos",
+        "Coordenadores de TI",
+        "Consultores de Gestão"
+      ],
+      "deslocamentos": {
+        "Regioes_Metropolitanas": 750.00,
+        "Capitais_Menores": 700.00,
+        "Outras_Areas": 650.00
+      }
+    },
+    "d": {
+      "descricao": [
+        "Analistas de Sistemas",
+        "Especialistas de Suporte",
+        "Técnicos de Instalação",
+        "Auxiliares de Campo"
+      ],
+      "deslocamentos": {
+        "Regioes_Metropolitanas": 520.00,
+        "Capitais_Menores": 480.00,
+        "Outras_Areas": 440.00
+      }
+    },
+    "e": {
+      "descricao": [
+        "Outros Colaboradores"
+      ]
+    }
+  }
+}
