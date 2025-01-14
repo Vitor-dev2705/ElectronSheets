@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link href="../styles/output.css" rel="stylesheet">
+    <title>Diárias & Passagens - CENSIPAM</title>
+</head>
+
+<body>
+    <div id="loading" class="hidden flex fixed inset-0 z-50 justify-center items-center bg-gray-100/75">
+        <div class="w-10 h-10 border-4 border-t-blue-500 border-gray-300 rounded-full animate-spin"></div>
+    </div>
+
+    <section class="relative flex flex-wrap lg:h-screen lg:items-center">
+        <div class="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
+            <div id="flash-alert-container" class="w-fit hover:cursor-default" style="margin: 0 auto 35px;"></div>
+            <div class="mx-auto max-w-lg text-center">
+                <h1 class="text-2xl font-bold sm:text-3xl">Diárias & Passagens</h1>
+
+                <p class="mt-4 text-gray-500">Programação Nacional/Internacional de Viagens de 2025</p>
+            </div>
+
+            <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
+                <div id="page1" class="form-page flex flex-col gap-3">
+                    <div>
+                        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Tipo de Missão <span class="text-red-700">*</span></label>
+
+                        <div class="relative">
+                            <select id="missao" name="missao" 
+                                class="w-full rounded-lg border-2 border-gray-400 p-4 pe-12 text-sm shadow-sm"
+                                onchange="UI.toggleOutroInput()">
+                                <option value="" disabled selected>Selecione o tipo de missão</option>
+                                <option value="Reunião">teste</option>
+                                <option value="Feiras e workshops">teste e workshops</option>
+                                <option value="Capacitação">teste</option>
+                                <option value="Projeto social">teste social</option>
+                                <option value="Desporto">teste</option>
+                                <option value="Outras">teste</option>
+                            </select>
+                        </div>
+                        <div id="outroInputDiv" class="relative hidden mt-3">
+                            <input type="text" id="outroInput"
+                                class="w-full rounded-lg border-2 border-gray-400 p-4 pe-12 text-sm shadow-sm"
+                                placeholder="Digite o tipo" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="evento" class="block text-gray-700 text-sm font-bold mb-2">Nome do Evento <span
+                                class="text-red-700">*</span></label>
+
+                        <div class="relative">
+                            <input type="text" name="evento" id="evento" 
+                                class="w-full rounded-lg border-2 border-gray-400 p-4 pe-12 text-sm shadow-sm"
+                                placeholder="Especifique o evento">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="objetivo_missao" class="block text-gray-700 text-sm font-bold mb-2">Objetivo <span
+                                class="text-red-700">*</span></label>
+
+                        <div class="relative">
+                            <textarea type="text"  rows="1" id="objetivo_missao" name="objetivo_missao"
+                                class="w-full rounded-lg border-2 border-gray-400 p-4 pe-12 text-sm shadow-sm"
+                                placeholder="Detalhe o objetivo" /></textarea>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row gap-3">
+                        <div>
+                            <label for="justificativa" class="block text-gray-700 text-sm font-bold mb-2">Justificativa <span
+                                    class="text-red-700">*</span></label>
+
+                            <div class="relative">
+                                <textarea type="text"  rows="1" name="justificativa" id="justificativa"
+                                    class="w-full rounded-lg border-2 border-gray-400 p-4 pe-12 text-sm shadow-sm"
+                                    placeholder="Detalhe" ></textarea>
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <label for="prioridade" class="block text-gray-700 text-sm font-bold mb-2">Prioridade <span
+                                    class="text-red-700">*</span></label>
+    
+                            <div class="relative">
+                                <input type="number" id="prioridade" name="prioridade" class="w-20 rounded-lg border-2 border-gray-400 p-4 pe-5 text-sm shadow-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="eventual_prej" class="block text-gray-700 text-sm font-bold mb-2">Eventual Prejuizo <span
+                                class="text-red-700">*</span></label>
+
+                        <div class="relative">
+                            <textarea type="text" name="eventual_prej" id="eventual_prej"
+                                class="w-full rounded-lg border-2 border-gray-400 p-4 pe-12 text-sm shadow-sm"
+                                placeholder="Detalhe o eventual Prejuizo" /></textarea>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="ambito" class="block text-gray-700 text-sm font-bold mb-2">Âmbito <span class="text-red-700">*</span></label>
+
+                        <div class="relative">
+                            <select id="ambito" name="ambito"  class="w-full rounded-lg border-2 border-gray-400 p-4 pe-12 text-sm shadow-sm" onchange="UI.verificarAmbito()">
+                                <option value="" disabled selected>Selecione o âmbito</option>
+                                <option value="Nacional">Nacional</option>
+                                <option value="Internacional">Internacional</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="page2" class="form-page flex flex-col hidden gap-3">
+                    <div class="hidden" id="cidade_estado_div">
+                        <label for="cidadeEstadoInput" class="block text-gray-700 text-sm font-bold mb-2">Cidade/Estado da Missão <span class="text-red-700">*</span></label>
+
+                        <div class="relative flex justify-between">
+                                <!-- Dropdown menu -->
+                                <div id="dropdownSearch" class="z-10 w-full rounded-lg bg-white shadow dark:bg-gray-700">
+                                    <div class="p-3">
+                                    <div class="relative">
+                                        <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
+                                        <svg class="h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                                        </svg>
+                                        </div>
+                                        <input type="text" list="cidadeEstadoOptions" id="cidadeEstadoInput" name="cidadeEstadoInput" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500" placeholder="Pesquisar Estados/Cidades" />
+                                    </div>
+                                    </div>
+                                    <ul id="cidadeEstadoOptions" class="h-28 overflow-y-auto px-3 pb-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownSearchButton">
+                                        <li>
+                                            <div class="flex items-center rounded p-2 hover:bg-gray-100 dark:hover:bg-gray-600">
+                                            <input id="checkbox-item-11" type="checkbox" value="" class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-500 dark:bg-gray-600 dark:ring-offset-gray-700 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-700" />
+                                            <label for="checkbox-item-11" class="ms-2 w-full rounded text-sm font-medium text-gray-900 dark:text-gray-300">Bonnie Green</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label for="inicio_miss" class="block text-gray-700 text-sm font-bold mb-2">Início <span
+                                    class="text-red-700">*</span></label>
+
+                            <div class="relative">
+                                <input type="date" name="inicio_miss" id="inicio_miss" 
+                                    class="w-full rounded-lg border-2 border-gray-400 p-4 pe-12 text-sm shadow-sm"
+                                    placeholder="Início" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="term_miss" class="block text-gray-700 text-sm font-bold mb-2">Término<span
+                                    class="text-red-700">*</span></label>
+
+                            <div class="relative">
+                                <input type="date" name="term_miss" id="term_miss" 
+                                    class="w-full rounded-lg border-2 border-gray-400 p-4 pe-12 text-sm shadow-sm"
+                                    placeholder="Término" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="inicio_desl" class="block text-gray-700 text-sm font-bold mb-2">Início de
+                                Deslocamento <span class="text-red-700">*</span></label>
+
+                            <div class="relative">
+                                <input type="date" name="inicio_desl" id="inicio_desl" 
+                                    class="w-full rounded-lg border-2 border-gray-400 p-4 pe-12 text-sm shadow-sm"
+                                    placeholder="Início de Deslocamento" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="term_desl" class="block text-gray-700 text-sm font-bold mb-2">Término de
+                                Deslocamento <span class="text-red-700">*</span></label>
+
+                            <div class="relative">
+                                <input type="date" name="term_desl" id="term_desl" 
+                                    class="w-full rounded-lg border-2 border-gray-400 p-4 pe-12 text-sm shadow-sm"
+                                    placeholder="Término de Deslocamento" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row gap-2">
+                        <div>
+                            <label for="num_diarias" class="block text-gray-700 text-sm font-bold mb-2">Número Total de Diárias</label>
+
+                            <div class="relative">
+                                <input type="text" name="num_diarias" id="num_diarias" readonly
+                                    class="w-full rounded-lg border-2 border-gray-400 p-4 pe-12 text-sm shadow-sm"
+                                    placeholder="Número Total de Diárias" />
+                            </div>
+                        </div>
+
+                        <div class="num_participantes">
+                            <label for="numeroParticipantes" class="block text-gray-700 text-sm font-bold mb-2">Número de
+                                Participantes <span class="text-red-700">*</span></label>
+
+                            <div class="relative">
+                                <input type="number" id="numeroParticipantes" name="numeroParticipantes" min="1" 
+                                    class="w-full rounded-lg border-2 border-gray-400 p-4 pe-12 text-sm shadow-sm"
+                                    placeholder="Número de Participantes" oninput="UI.gerarCamposCargos()" />
+                                <p id="error-msg" class="text-red-500 text-xs italic hidden">Número máximo de participantes
+                                    atingido.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cargoParticipantesDiv"></div>
+                    
+
+                    <div>
+                        <label for="preco_diarias" class="block text-gray-700 text-sm font-bold mb-2">Preço das Diárias
+                            (R$)</label>
+
+                        <div class="relative">
+                            <input type="text" id="preco_diarias" name="preco_diarias" readonly
+                                class="w-full rounded-lg border-2 border-gray-400 p-4 pe-12 text-sm shadow-sm"
+                                placeholder="R$0,00" oninput="formatarMoeda(this)" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="preco_pass" class="block text-gray-700 text-sm font-bold mb-2">Preço das
+                            Passagens (R$)</label>
+
+                        <div class="relative">
+                            <input type="text" id="preco_pass" name="preco_pass" readonly
+                                class="w-full rounded-lg border-2 border-gray-400 p-4 pe-12 text-sm shadow-sm"
+                                placeholder="R$0,00" oninput="formatarMoeda(this)" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botões de navegação -->
+                <div class="flex justify-between mt-4" id="navigationButtons">
+                    <button id="prevBtn" type="button"
+                        class="rounded-lg bg-gray-500 px-5 py-3 text-sm font-medium text-white hidden">Anterior</button>
+                    <button id="nextBtn" type="button" class="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white">Próximo</button>
+                    <button id="submitBtn" type="button"
+                        class="rounded-lg bg-green-500 px-5 py-3 text-sm font-medium text-white hidden">Enviar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="relative flex h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
+            
+        </div>
+    </section>
+
+    <script src="../scripts/renderer.js"></script>
+    <script src="../../../node_modules/flowbite/dist/flowbite.min.js"></script>
+</body>
+
+</html>
